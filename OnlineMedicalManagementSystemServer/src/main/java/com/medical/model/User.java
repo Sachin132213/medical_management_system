@@ -21,6 +21,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userId;
 	private String username;
+	private String passsword;
 	private String diseaseDepartment;
 	private String firstName;
 	private String lastName;
@@ -32,6 +33,19 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
 	@JsonIgnore
 	private Set<UserRole> userRoles=new HashSet<>();
+	
+	public String getPasssword() {
+		return passsword;
+	}
+	public void setPasssword(String passsword) {
+		this.passsword = passsword;
+	}
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
+	}
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
 	public Long getUserId() {
 		return userId;
 	}
@@ -88,11 +102,12 @@ public class User {
 	}
 	public User() {
 	}
-	public User(Long userId, String username, String diseaseDepartment, String firstName, String lastName, String email,
-			String phone, boolean enabled, String profile) {
+	public User(Long userId, String username, String passsword, String diseaseDepartment, String firstName,
+			String lastName, String email, String phone, boolean enabled, String profile, Set<UserRole> userRoles) {
 		super();
 		this.userId = userId;
 		this.username = username;
+		this.passsword = passsword;
 		this.diseaseDepartment = diseaseDepartment;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -100,6 +115,8 @@ public class User {
 		this.phone = phone;
 		this.enabled = enabled;
 		this.profile = profile;
+		this.userRoles = userRoles;
 	}
+	
 	
 }

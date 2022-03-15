@@ -7,5 +7,5 @@ import com.medical.model.UserRole;
 
 public interface UserService {
 	//creating user
-	public UserService createUser(User user,Set<UserRole> userRoles);
+	public User createUser(User user,Set<UserRole> userRoles) throws Exception;
 }
